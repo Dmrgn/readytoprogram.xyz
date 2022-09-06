@@ -1,0 +1,14 @@
+---
+import DocumentationSelection from "../layouts/DocumentationSelection.astro";
+
+// all docs except for the intro page
+const posts = (await Astro.glob('./guides/*.mdx')).filter((post) => 
+    post.frontmatter.title !== "Introduction"
+).sort((a,b)=>{
+    return a.frontmatter.order - b.frontmatter.order;
+});
+---
+
+<DocumentationSelection title="Guides Navigation" posts={posts}>
+    
+</DocumentationSelection>

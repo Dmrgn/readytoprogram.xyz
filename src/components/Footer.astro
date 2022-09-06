@@ -1,0 +1,35 @@
+---
+import FooterSplash from "./FooterSplash.jsx";
+---
+
+<footer>
+    <div class="footer-padding"></div>
+    <div class="footer-container">
+        <div class="box w-full flex flex-col items-center md:grid md:grid-cols-3">
+            <p class="p-2 text-center md:text-left ">
+                This page is open source on 
+                <a class="text-primary flex justify-center md:justify-start items-end" href="https://github.com/dmrgn">
+                    GitHub.
+                    <img style="height: 30px; width: 30px" class="ml-1 dark:invert" src="https://img.icons8.com/ios-glyphs/30/000000/github.png" />
+                </a>
+            </p>
+            <p class="p-2 text-center">
+                <FooterSplash client:visible />
+            </p>
+            <p class="p-2 text-center md:text-right">
+                Some icons from
+                <a class="text-primary" href="https://icons8.com">Icons8.com</a>
+            </p>
+        </div>
+    </div>
+</footer>
+
+<style>
+    .footer-container {
+        @apply m-8 bottom-0 absolute;
+        width: calc(100% - 4rem);
+    }
+    .footer-padding {
+        @apply mt-4 h-64 md:h-28;
+    }
+</style>

@@ -1,0 +1,36 @@
+---
+import PageContentMenu from "./PageContentMenu.jsx"
+---
+
+<div class="menu-container m-8 sticky box">
+    <PageContentMenu client:load />
+</div>
+
+<style>
+    .menu-container {
+        width: min(400px, 85%);
+        top: 204px;
+    }
+</style>
+
+<style is:global>
+    /* declared in PageContentMenu.jsx */
+    .menu-items-container > .section {
+        @apply text-xl my-4 ml-4 relative transition hover:scale-110;
+        left: -50%;
+    }
+    .menu-items-container > .sub-section {
+        @apply my-4 ml-6 relative transition hover:scale-110;
+        left: -50%;
+
+    }
+    /* the arrow image */
+    .menu-items-container > .sub-section > img {
+        filter:hue-rotate(120deg) brightness(120%);
+        height: 20px;
+    }
+    .navigate-item {
+        @apply relative;
+        top: -20vh;
+    }
+</style>

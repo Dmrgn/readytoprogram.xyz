@@ -1,0 +1,122 @@
+---
+title: Ready with VSCode
+description: Learn how to use VSCode with Ready to Program.
+icon: {
+    type: image,
+    url: https://img.icons8.com/color/40/000000/visual-studio-code-2019.png
+}
+layout: ../../layouts/Documentation.astro
+order: 2
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This guide will teach you how to install and configure Visual Studio Code (VSCode) to work with Java and the hsa library.
+
+---
+
+## Installing Visual Studio Code
+
+You can install Visual Studio Code from the official website [here](https://code.visualstudio.com/). Download the apropriate version for your system.
+
+### Setup
+
+Open the downloaded executable. When prompted, accept the license agreement. Its recommended that you allow the installer to create a desktop shortcut. After the installer has finished, launch VSCode.  
+
+### Java Setup
+
+First we will be installing a set of extensions to make working with Java projects easier. Navigate to the extensions menu on the left side of the VSCode window. In the search bar type `https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack` and press enter. The first result should be called `Extension Pack for Java`. Click on the install button.
+
+Next we will be installing a Java JDK. Open the VSCode command palette (ctrl/cmd + shift + p) and type `Java: Install New JDK`. Press enter. Select download and follow the download instructions to completion. Return to the VSCode window and select `Reload Window` in the `Install New JDK` menu, or open the command pallete (ctrl/cmd + shift + p) and type `Developer: Reload Window`.
+
+### hsa Setup
+
+Next we will be creating a template Java project which includes the hsa library files. First create a folder somewhere on your computer where you would like to store all of your Java projects (e.g `My Documents/Java Projects`). Then create a folder called `template hsa` inside of your Java projects folder. Move the hsa library files into the `template hsa` folder so that it forms this file structure:
+
+```
+/Java Projects
+    /template hsa
+        /hsa
+            Animator.java
+            Console.java
+            etc...
+```
+
+If you do not have the hsa library files, you can download them [here](/downloads/hsa.zip). Extract it.
+
+Then open VSCode and select `File/Open Folder` from the top menu. Navigate to and open the `template hsa` folder on your computer. Next create a file called `Main.java` inside of `template hsa`. You can do this inside of VSCode by selecting (`File/New File`) from the top menu and then selecting `New Java Class` from the dropdown. Save the file with (ctrl/cmd + s) and ensure it is named properly as `Main.java`.
+
+Your final file structure should look like:
+
+```
+/Java Projects
+    /template hsa
+        /hsa
+            Animator.java
+            Console.java
+            etc...
+        Main.java
+```
+
+### Test That Everything Works
+
+Inside of the `Main.java` file, write the following code:
+
+```java
+import hsa.Console;
+
+public class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        c.println("Hello, World!");
+    }
+}
+```
+
+Save the file with (ctrl/cmd + s) and run it by selecting the play button in the top right corner of the VSCode window. You should see a window pop up with the printed text `Hello, World!`.
+
+---
+
+## Creating a New Project
+
+Creating a new project with hsa is as simple as duplicating the `template hsa` folder. Then add any code to the Main.java file and create more files as needed.
+
+---
+
+## Learning VSCode
+
+Visual Studio Code has some official tips and tricks on their website [here](https://code.visualstudio.com/docs/getstarted/tips-and-tricks).
+
+Almost everything in VSCode is customizable, you can learn how to change VSCode's theme by following the link [here](https://code.visualstudio.com/docs/getstarted/themes).
+
+---
+
+## Troubleshooting
+
+### Common Errors
+
+hsa is *ancient* software and getting it running on modern systems is no easy feat. Consider the following a list of common issues and their potential solutions.
+
+- `The import hsa cannot be resolved`
+
+This error means that Java can not find the hsa class files. Ensure that the `hsa` folder containing ~29 files with the .java extension is present in the project directory. Also ensure that the hsa folder is unzipped.
+
+- `Console cannot be resolved to a type`
+
+This error likely means that you forgot to type `import hsa.Console;` or `import hsa.*;` at the top of the file.
+
+### Found Something Else?
+
+If you ran into a different issue and have found the solution, this page is open source on [GitHub](https://github.com/dmrgn). Consider adding your issue and solution to this list.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on typography with `hsa.Console` [here](/docs/typography).

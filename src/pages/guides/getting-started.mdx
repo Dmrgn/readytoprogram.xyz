@@ -1,0 +1,78 @@
+---
+title: Getting Started
+description: Intro to Ready to Program.
+icon: 💻
+layout: ../../layouts/Documentation.astro
+order: 0
+---
+
+# {frontmatter.title}
+
+___
+## Overview
+
+Ready to Program is *ancient* software
+
+___
+## Installation
+
+![Windows Logo](https://img.icons8.com/color/48/000000/windows-10.png)
+### Windows 
+Ready to Program can be installed on Windows devices through the official Ready to Program installer. Available [here](http://compsci.ca/holtsoft/ready171_install.exe). It is also possible, and recommended, to use Ready to Program's classes through a different integrated development environment (IDE). This allows you to take advantage of a modern IDE with features such as syntax highlighting, refactoring, and code completion. The guide to this can be found [here](/guides/vscode).
+
+Once the Ready to Program installer has downloaded, you can run it by double-clicking the executable. Select 'next' at all text prompts. You can skip entering your user name and organization by pressing 'next'. When it asks you to confirm press 'install'. Once it has finished installing press 'finish'. Then it will ask you to "Select Start-up Directory for Ready", chose "The My Documents Folder" and press 'okay'. Next it will ask you to set the .java file association. If you plan on using the Ready to Program IDE to code all of your Java programs (NOT recommended), select 'Yes'. Otherwise, select 'No'. Ready to Program should now appear as a shortcut on your Desktop. Double click the shortcut to run Ready to Program.
+
+<div class="flex flex-row">
+    <img class="dark:invert" src="https://img.icons8.com/ios-glyphs/48/000000/mac-os.png"/>
+    <img src="https://img.icons8.com/color/48/000000/linux--v1.png"/>
+</div>
+### MacOS or Linux 
+The Ready to Program integrated development environment (IDE) is not natively compatible with MacOS or Linux. However it is possible, and recommended, that you use Ready to Program's classes through a different IDE (one that is compatible with MacOS or Linux). The guide to this can be found [here](/guides/macos-linux).
+
+___
+## The Integrated Development Environment
+
+This section assumes that you are using the Ready to Program integrated development environment (IDE). If you are using Ready to Program through a different IDE (recommended) this does not apply to you.
+
+### Setup
+
+When you launch Ready to Program a splash screen will play for 5 seconds or until you press a key. This can be disabled in the Preferences window (File/Preferences/General/Skip Splash Screen). You can also disable the dialog box which confirms exiting Ready to program (File/Preferences/General/Confirm On Quit). Select 'apply' and exit preferences.
+
+### Creating a Program from a Template 
+
+In general, a Java file contains a single class so here we use file and class interchangeably. Most Java classes share code in common. Instead of forcing you to retype this common code each time you create a new class, Ready to Program supplies you with a number of templates (commonly called boilerplates) which allow you to start a new class with the boilerplate already entered.
+
+Most of the time you are using Ready to Program for the hsa library. You can create a new class with basic hsa.Console boilerplate through (File/New/HSA Console Application Boilerplate).
+
+This will generate the following code:
+```java
+// The "Main" class.
+import java.awt.*;
+import hsa.Console;
+
+public class Main
+{
+    static Console c;           // The output console
+    
+    public static void main (String[] args)
+    {
+        c = new Console ();
+        
+        // Place your program here.  'c' is the output console
+    } // main method
+} // Main class
+
+```
+
+After `c = new Console ();`, on a newline type `c.println("Hello, World!");`.
+
+Save the program (ctrl + s) and run it by pressing 'Run' or 'F1'.
+
+This should generate a console window which displays the text `Hello, World!`.
+
+___
+## What Next?
+
+hmmm...
+
+Check out the documentation on typography with `hsa.Console` [here](/docs/typography).

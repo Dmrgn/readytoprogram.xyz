@@ -1,0 +1,195 @@
+---
+title: Typography
+description: c.println has never looked so good!
+icon: "🖋️"
+layout: ../../layouts/Documentation.astro
+order: 0
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This documentation outlines methods of the `hsa.Console` class which are used to display text to the user.
+
+---
+
+## hsa.Console
+
+By default, an `hsa.Console` window can contain 25 lines and 80 columns of text. However, the `hsa.Console` class has 8 constructors which allow you to specify various settings:
+
+### Constructors
+
+- `new Console()`
+- `new Console(int fontSize)`
+- `new Console(int rows, int columns)`
+- `new Console(int rows, int columns, int fontSize)`
+- `new Console(String title)`
+- `new Console(int fontSize, String title)`
+- `new Console(int rows, int columns, String title)`
+- `new Console(int rows, int columns, int fontSize, String title)`
+
+### Parameters
+
+- `int fontSize` specifies the initial font size of the created console window.
+- `int rows` specifies the height of the console window in number of lines of text.
+- `int columns` specifies the width of the console window in number of columns of text.
+- `String title` specifies the title appearing at the top of the created console window.
+
+### Examples
+
+```java
+import hsa.Console; // or import hsa.*;
+class Main {
+    public static void main (String[] args) {
+        // creates a console 25 lines of text 
+        // tall and 80 columns of text wide
+        Console c1 = new Console();
+
+        // creates a console 30 lines of text 
+        // tall and 60 columns of text wide
+        // with the window title set to "title"
+        Console c2 = new Console(30, 60, "title");
+    }
+}
+```
+
+---
+
+## hsa.Console.print
+
+### Overloads
+
+`hsa.Console`'s print method has 20 [overloads](https://www.programiz.com/java-programming/method-overloading) allowing you to print data to the console in various ways. The print methods support [the 8 basic primitive data types](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html) as well as strings:
+
+- `void hsa.Console.print(byte b)`
+- `void hsa.Console.print(short s)`
+- `void hsa.Console.print(int i)`
+- `void hsa.Console.print(long l)`
+- `void hsa.Console.print(float f)`
+- `void hsa.Console.print(double d)`
+- `void hsa.Console.print(boolean b)`
+- `void hsa.Console.print(char c)`
+- `void hsa.Console.print(String s)`
+
+Each of these methods outputs the argument to the Console window beginning at the cursor position.
+
+### Formatting
+
+Print methods also support a `fieldSize` argument:
+
+- `void hsa.Console.print(byte number, int fieldSize)`
+- `void hsa.Console.print(short number, int fieldSize)`
+- `void hsa.Console.print(int number, int fieldSize)`
+- `void hsa.Console.print(long number, int fieldSize)`
+
+Outputs `number` to the Console window in a field which takes up `fieldSize` number of characters. The output is right justified within the field.
+
+For example:
+
+```java
+c.print(100, 5);
+```
+
+Produces the output:
+
+```
+--100
+```
+(dashes (-) used in place of spaces for clarity)
+
+The `fieldSize` argument is also support for floating point numbers:
+
+- `void hsa.Console.print(float number, int fieldSize)`
+- `void hsa.Console.print(double number, int fieldSize)`
+
+If `number` is too large when converted to a string to fit into `fieldSize`, these methods will attempt to remove decimal places to make it fit. These methods are also right justified within the field.
+
+When formatting non-numerical data you can also use the `fieldSize` argument, however the output will be left justified within the field:
+
+- `void hsa.Console.print(boolean b, int fieldSize)`
+- `void hsa.Console.print(char c, int fieldSize)`
+- `void hsa.Console.print(String s, int fieldSize)`
+
+For example:
+```java
+// two (2) extra spaces will be printed after "Number:"
+c.print("Number:", 9);
+// two (2) extra spaces will be printed before "42"
+c.print(42, 4);
+```
+
+Produces the output:
+
+```
+Number:----42
+```
+
+(dashes (-) used in place of spaces for clarity)
+
+### Floating Point Data
+
+You can further format floating point numbers by specifying a `decimalPlaces` argument:
+
+- `void hsa.Console.print(double number, int fieldSize, int decimalPlaces)`
+- `void hsa.Console.print(float number, int fieldSize, int decimalPlaces)`
+
+The `fieldSize` argument will be ignored if `number` will not fit inside of it and so you can effectively ignore it by passing in a `fieldSize` of `0`.
+
+---
+
+## hsa.Console.println
+
+Every `hsa.Console.print` [overload](https://www.programiz.com/java-programming/method-overloading) has an equivilent `hsa.Console.println` method which takes exactly the same arguments and only varies in that `hsa.Console.println` adds a new line character ("\n") to the output.
+
+You can also call `void hsa.Console.println()` which has no arguments and simply prints a new line character ("\n").
+
+---
+
+## Styling Text
+
+You can change the appearance of text outputed through the `hsa.Console.print` and `hsa.Console.println` methods with the following methods:
+
+`void hsa.Console.setTextColor(java.awt.Color c)`
+
+Sets the colour of the outputed text.
+
+`void hsa.Console.setTextBackgroundColor(java.awt.Color c)`
+
+Sets the background colour of the outputed text.
+
+You are unable to change the font or font size of text outputed through the `hsa.Console.print` and `hsa.Console.println` methods, however you can specify a font size initially when the `hsa.Console` is created through one of `hsa.Console`'s constructors.
+
+### Examples
+
+```java
+import hsa.Console; // or import hsa.*;
+import java.awt.Color; // or import java.awt.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+
+        c.setTextColor(Color.RED);
+        c.println("Hello in red!");
+        c.setTextBackgroundColor(Color.BLACK);
+        c.println("Hello in red with a black background!");
+    }
+}
+```
+
+---
+
+## hsa.Console.clear
+
+`void hsa.Console.clear()` Clears the entire console window and positions the cursor in the top left corner.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on graphics with `hsa.Console` [here](/docs/graphics).

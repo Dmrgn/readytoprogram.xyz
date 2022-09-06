@@ -1,0 +1,58 @@
+---
+title: Ready with MacOS and Linux
+description: Learn how to use Ready to Program with MacOS and Linux.
+icon: 🍎
+layout: ../../layouts/Documentation.astro
+order: 1
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+### The Idea
+
+Ready to Program uses the library hsa (acronym for Holt Software Associates) in order to create graphics applications. hsa includes 9 classes, most prominently `hsa.Console`. We can run any code (that works in Ready to Program) on a MacOS or Linux machine by giving Java access to the hsa library.
+
+It is important to note that Ready to Program runs on Java version 1.4. It is not recommended to install Java 1.4 if you are programming outside of the Ready to Program integrated development environment (IDE). Instead, you should use a modern version of Java. Just make sure that you are only using features present in Java 1.4. This means you shouldn't be using `java.util.ArrayList`. You can check the Java 1.4.2 api reference [here](https://java142.netlify.app/api/overview-summary.html) for more information on what Java built-ins are available.
+
+---
+
+## Installing hsa
+
+hsa is normally packaged with Ready to Program however you can download the library in a standalone format [here](/downloads/hsa.zip). Extract it.
+
+---
+
+## Picking an Integrated Development Environment
+
+There are several alternatives to the Ready to Program IDE, anything that can run Java will work. Currently there are guides for the following, however the setup should be similar in any IDE. You could even use NotePad!
+
+![VSCode Logo](https://img.icons8.com/color/48/000000/visual-studio-code-2019.png)
+### Visual Studio Code
+[Official Site](https://code.visualstudio.com/)
+
+The guide for VSCode can be found [here](/guides/vscode).
+
+---
+
+## Issues
+
+While most features work identically on MacOS and Linux as they do natively on Windows, there are some discrepancies. Consider this a list of known differences between platforms. This page is open source on [GitHub](https://github.com/Dmrgn/readytoprogram-docs). If you find anything we are missing or can add clarification, please contribute!
+
+### Linux
+- (Medium) Text drawn to an `hsa.Console` with `hsa.Console.drawString()` will take up more space than equivilently drawn text on Windows given the same font size.
+- (Minor) When animating you can prevent a lot of the flickering by drawing 1000 rectangles somewhere offscreen (e.g `c.drawRect(-10,-10,0,0)`) before redrawing a sprite. This doesn't work on Windows.
+
+### MacOS
+- *MacOS is untested...*
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on typography with `hsa.Console` [here](/docs/typography).

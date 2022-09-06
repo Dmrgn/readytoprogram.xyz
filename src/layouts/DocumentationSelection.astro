@@ -1,0 +1,53 @@
+---
+const { title, posts } = Astro.props;
+
+import Layout from "./Layout.astro";
+---
+
+<Layout title={title}>
+    <div class="md:grid grid-cols-5">
+        <div class="col-span-1">
+            <!-- a left-floating menu could go here -->
+        </div>
+        <div class="col-span-3">
+            <div class="m-8">
+                <slot/>
+                <div class="lg:grid grid-cols-2 items-stretch">
+                    {posts.map(post =>
+                        <a href={post.url} class="m-2">
+                            <div class="selection-hoverable box transition h-full">
+                                <div class="flex flex-col mt-2">
+                                    <div class="flex items-center">
+                                        {function() {
+                                            if (post.frontmatter.icon?.type === "image") {
+                                                return <img style="min-width:40px; min-height:40px;" src={post.frontmatter.icon?.url} />
+                                            }
+                                            return <h1 class="text-4xl">{post.frontmatter.icon}</h1>
+                                        }()}
+                                        <h1 class="text-4xl font-bold ml-4">{post.frontmatter.title}</h1>
+                                    </div>
+                                    <h2 class="mx-2 mt-2">{post.frontmatter.description}</h2>
+                                </div>
+                            </div>
+                        </a>
+                    )}
+                </div>
+            </div>
+        </div>
+        <div class="col-span-1">
+            <!-- a right-floating menu could go here -->
+        </div>
+    </div>
+</Layout>
+
+<style>
+    .selection-hoverable:hover {
+        transform: scale(1.04);
+    }
+</style>
+
+<style is:global>
+    .box {
+        @apply dark:bg-darkAccent bg-lightAccent rounded p-4 drop-shadow-md
+    }
+</style>

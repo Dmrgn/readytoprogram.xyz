@@ -1,0 +1,47 @@
+.nav-burger{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.nav-burger::before {
+    @apply bg-primary;
+    content: "";
+    height: 5px;
+    width: 100%;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.nav-burger::after {
+    @apply bg-primary;
+    content: "";
+    height: 5px;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    position: absolute;
+}
+
+.nav-burger.active{
+    position: relative;
+    width: 20px;
+    height: 20px;
+}
+.nav-burger.active::before {
+    @apply bg-primary;
+    content: "";
+    height: 100%;
+    width: 5px;
+    left: 0;
+    top: 0;
+    position: absolute;
+}
+.nav-burger.active::after {
+    @apply bg-primary;
+    content: "";
+    height: 100%;
+    width: 5px;
+    left: calc(100% - 5px);
+    top: 0;
+    position: absolute;
+}

@@ -1,0 +1,52 @@
+---
+import NavBurger from "./NavBurger.jsx"
+import NavItems from "./NavItems.jsx"
+---
+
+<nav class="sticky top-0 z-10">
+    <div class="flex flex-col md:flex-row justify-between w-full md:p-8">
+        <div class="box rounded flex items-center justify-between">
+            <a href="/">
+                <div class="rtp-logo flex text-5xl">
+                    <p>R</p>
+                    <span class="hidden md:block mr-0 transition-all duration-700">eady</span>
+                    <p>T</p>
+                    <span class="hidden md:block mr-0 transition-all duration-700">o</span>
+                    <p>P</p>
+                    <span class="hidden md:block mr-0 transition-all duration-700">rogram</span>
+                </div>
+            </a>
+            <NavBurger client:load />
+        </div>
+        <NavItems client:load />
+    </div>
+</nav>
+
+<style>
+    .nav-button:global() {
+        @apply transition hover:scale-125 p-6 text-xl;
+    }
+    .rtp-logo > span {
+        font-size: 0px;
+    }
+    .rtp-logo:hover > span {
+        @apply text-5xl mr-8;
+    }
+    .rtp-logo {
+        position: relative;
+    }
+    .rtp-logo:hover::after {
+        width: 100%;
+    }
+    .rtp-logo::after {
+        @apply bg-primary;
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 100%;
+        width: 35%;
+        transition: all 0.7s;
+        height: 5px;
+        z-index: -1;
+    }
+</style>

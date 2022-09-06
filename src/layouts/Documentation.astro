@@ -1,0 +1,70 @@
+---
+const { frontmatter } = Astro.props;
+
+import Layout from "./Layout.astro";
+import LeftMenu from "../components/LeftMenu.astro"
+---
+
+<Layout title={frontmatter.title}>
+    <div class="md:grid grid-cols-3 lg:grid-cols-4 gap-4">
+        <div style="height: 100%">
+            <LeftMenu />
+        </div>
+        <div class="col-span-2">
+            <article>
+                <div class="mdx-content m-8">
+                    <slot />
+                </div>
+            </article>
+        </div>
+        <div class="hidden lg:block">
+            <!-- a right-floating menu could go here -->
+        </div>
+    </div>
+</Layout>
+
+<style is:global>
+    .box {
+        @apply dark:bg-darkAccent bg-lightAccent rounded p-4 drop-shadow-md
+    }
+    .mdx-content > h1 {
+        @apply text-3xl font-bold;
+    }
+    .mdx-content > h2 {
+        @apply text-2xl mb-4;
+        position: relative;
+    }
+    .mdx-content > h3 {
+        @apply text-lg mt-4;
+    }
+    .mdx-content > h2::after {
+        @apply bg-primary;
+        content: "";
+        position: absolute;
+        width: 2rem;
+        height: 2px;
+        bottom: -3px;
+        left: 0px;
+    }
+    .mdx-content > hr {
+        @apply my-8;
+        /* margin-left: -2rem;
+        margin-right: -2rem; */
+    }
+    .mdx-content > p {
+        @apply mb-4 mt-3 ml-6;
+    }
+    .mdx-content :is(p > code, li > code) {
+        @apply text-primary dark:bg-darkAccent bg-lightAccent p-1 rounded-md;
+    }
+    .mdx-content > p > a {
+        @apply text-primary hover:text-darkAccent hover:dark:text-lightAccent underline;
+        position: relative;
+    }
+    .mdx-content > pre {
+        @apply box my-4
+    }
+    .mdx-content > ul {
+        @apply list-disc ml-12;
+    }
+</style>
