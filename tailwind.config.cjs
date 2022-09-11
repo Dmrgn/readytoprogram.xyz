@@ -8,8 +8,8 @@ module.exports = {
                 primary: '#ff0a0a',
                 dark: '#1c1c1c',
                 darkAccent: '#242424',
-                light: '#ffffff',
-                lightAccent: '#f5f5f5',
+                light: '#EEEEEE',
+                lightAccent: '#D5D5D5',
             }
         },
 	},

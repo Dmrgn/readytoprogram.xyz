@@ -4,8 +4,94 @@ description: The flickering burns my eyes
 icon: "🏃‍♀️"
 layout: ../../layouts/Documentation.astro
 order: 3
+incomplete: true
 ---
 
 # {frontmatter.title}
 
 ---
+
+## Overview
+
+### Why it Sucks
+
+Ready to Program was not built with animation in mind. It operates on what is known as a single buffer system and so inheriently is unable to perform consistent animation - most computer science courses promptly ignore this and will have you rigging together some form of botched animation technique anyways.
+
+Ready to Program also does not give you direct access to the graphics context, and so creating your own double buffer system is out of the question.
+
+You can read more about double and single buffer systems [here.](https://wiki.osdev.org/Double_Buffering)
+
+### Doing it Anyways
+
+Different teachers will prefer that you approach animation in different ways.
+
+Here are two common methods of attempting animation:
+
+- Using `java.lang.Thread.sleep(long millis)` on a single main thread
+- Creating separate animations on different `java.lang.Thread`s
+
+---
+
+## Single Threaded
+
+This approach to animation is the "best" as it ensures that only a single thread is accessing the `hsa.Console` instance at a time.
+
+Programs using this structure will take the following form:
+
+```java
+// create the console
+// initialize whatever needs to be animated
+while(/*the program is running*/) {
+    // clear the screen
+    // update whatever needs to be animated
+    // draw whatever needs to be animated
+    // wait for the next frame
+    try {
+        Thread.sleep(100);
+    } catch (InterruptedException e) {}
+}
+```
+
+For example:
+
+```java
+import hsa.Console; // or import hsa.*;
+import java.awt.*; // or import java.awt.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+
+        // x position of the animated square
+        int x = 0;
+
+        // while the program is running
+        while(true) {
+            // clear the screen
+            c.clear();
+
+            // update whatever needs to be animated
+            x+=10;
+
+            // draw whatever needs to be animated
+            c.setColor(Color.RED);
+            c.fillRect(x, 0, 100, 100);
+
+            // wait for the next frame
+            try {
+                Thread.sleep(100);
+            } catch (InterruptedException e) {}
+        }
+    }
+}
+```
+
+You can change the speed of animation by adjusting the argument passed to `Thread.sleep(millis)`.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the JavaDoc documentation for all of Ready to Program's classes [here](/docs/reference).

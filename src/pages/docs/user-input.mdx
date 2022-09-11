@@ -10,6 +10,206 @@ order: 2
 
 ---
 
+## Overview
+
+This documentation outlines methods of the `hsa.Console` class which can be used to get input from the user. It also outlines how to error trap input and prevent runtime errors.
+
+---
+
+## Reading Data
+
+The `hsa.Console` class provides several methods for reading different datatypes as input from the user.
+
+The complete reference of primitive datatypes in java can be found [here.](https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html)
+
+### Integers
+
+- `byte hsa.Console.readByte()`
+- `short hsa.Console.readShort()`
+- `int hsa.Console.readInt()`
+- `long hsa.Console.readLong()`
+
+A byte is a 8-bit integer value (-128 to 127).\
+A short is a 16-bit integer value value (-32,768 to 32,767).\
+An int is a 32-bit integer value (-2,147,483,648 to 2,147,483,647).\
+A long is an 64-bit integer value (-9,223,372,036,854,775,808 to 9,223,372,036,854,775,807).
+
+### Floating Point Numbers
+
+- `float hsa.Console.readFloat()`
+- `double hsa.Console.readDouble()`
+
+A float is a 32-bit floating point value.\
+A double is a 64-bit floating point value.
+
+### Other Datatypes
+
+- `boolean hsa.Console.readBoolean()`
+    - reads a boolean value (either "true" or "false") and is case insensitive.
+- `char hsa.Console.readChar()`
+    - reads a single char value.
+- `String hsa.Console.readString()`
+    - reads a String, it will stop reading once it encounters a space.
+- `String hsa.Console.readLine()`
+    - reads the entire line of input, including spaces, without the newline character at the end.
+
+### Examples
+
+```java
+import hsa.Console; // or import hsa.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // read a single word of input from the user
+        // (until the first space is encountered)
+        String name = c.readString();
+        c.println("Hello, " + name + "!");
+    }
+}
+```
+
+---
+
+## Error Trapping
+
+Getting input from the user is prone to causing errors. It is difficult to write your program so that it is capable of responding to any possible input from the user.
+
+Take the following example:
+
+```java
+import hsa.Console; // or import hsa.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // prompt the user for input
+        c.println("How old are you?");
+        // read an integer from the user
+        int age = c.readInt();
+        c.println("You are " + age + " years old!");
+    }
+}
+```
+
+If the user inputs something that is not an integer, such as `troll input`, Ready to Program will crash with the error message: `Unable to convert to integer.`. 
+
+We can prevent this behaviour by error trapping the input.
+
+Instead of reading an integer value, we can read the entire line of input and test if it is possible to convert it to an integer. If the string is invalid, we can handle the error appropriately without crashing the program.
+
+Take this example:
+
+```java
+import hsa.Console; // or import hsa.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // prompt the user for input
+        c.println("How old are you?");
+        // read an integer from the user
+        String ageString = c.readLine();
+        int ageInt;
+        // attempt to convert the input to an integer
+        try {
+            ageInt = Integer.parseInt(ageString);
+            // if converting to an integer was successful:
+            c.println("You are " + ageInt + " years old!");
+        } catch (Exception e) {
+            // if converting to an integer was unsuccessful:
+            c.println("Please enter a valid integer.");
+        }
+    }
+}
+```
+
+You can learn more about the `try {} catch() {}` statement [here.](https://www.programiz.com/java-programming/try-catch)
+
+---
+
+## Live Input
+
+You may notice that after every call to a 'readDatatype' method, you must wait for the user to press 'enter' before continuing. This can be problematic if you are trying to read live button presses. For example, if you are trying to use a 'wasd' control scheme the user would have to press enter after every button input.
+
+### c.getChar()
+
+Luckily there is an undocumented method of the `hsa.Console` class which can be used to directly read whatever the next available character in the keyboard buffer is:
+
+`char hsa.Console.getChar()`
+
+This method will read any character currently in the keyboard buffer, or pause the program until a character is available.
+
+You can pair this method with:
+
+`boolean hsa.Console.isCharAvail()`
+
+Which will return `true` if there is a character available in the keyboard buffer.
+
+### Example
+
+The following program will create a square which you can move around the screen with the 'wasd' keys.
+
+```java
+import hsa.Console; // or import hsa.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+
+        // x and y coordinate of our controllable square
+        int x = 0, y = 0;
+
+        // infinite loop
+        while(true) {
+            if (c.isCharAvail()) {
+                switch (c.getChar()) {
+                    case 'w':
+                        y--;
+                        break;
+                    case 'a':
+                        x--;
+                        break;
+                    case 's':
+                        y++;
+                        break;
+                    case 'd':
+                        x++;
+                        break;
+                    default:
+                        break;
+                }
+            }
+            // clear the screen
+            c.clear();
+            // draw our controllable square
+            c.fillRect(x*10, y*10, 10, 10);
+        }
+    }
+}
+```
+
+---
+
+## Utility Methods
+
 - `void hsa.Console.showCursor()`
 - `void hsa.Console.hideCursor()`
+    - Shows and hides the text cursor respectively.
 - `void hsa.Console.setCursor(int row, int col)`
+    - Moves the text cursor to the specified row and column.
+- `int hsa.Console.getMaxColumns()`
+    - Returns the width of the Console window in columns.
+- `int hsa.Console.getMaxRows()`
+    - Returns the height of the Console window in rows.
+- `int hsa.Console.getColumn()`
+- `int hsa.Console.getRow()`
+    - Returns the column number and row number of the current cursor position respectively.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on animating with `hsa.Console` [here](/docs/animation).

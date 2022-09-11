@@ -9,3 +9,92 @@ order: 4
 # {frontmatter.title}
 
 ---
+
+## Overview
+
+### JavaDoc
+
+You can view Ready to Program's classes in JavaDoc format [here.](https://readytoprogram-javadoc.netlify.app)
+
+### Extra Classes
+
+You may notice that the package contains more than the advertised 9 classes:
+
+- `hsa.Console`
+- `hsa.TextConsole`
+- `hsa.Stdin`
+- `hsa.Stdout`
+- `hsa.TextInputFile`
+- `hsa.TextOutputFile`
+- `hsa.FatalError`
+- `hsa.Message`
+- `hsa.Status`
+
+It also includes:
+
+- `hsa.Animator`
+- `hsa.Bounceable`
+- `hsa.Moveable`
+- `hsa.Paintable`
+- `hsa.PaintBug`
+- `hsa.PhoneBook`
+- `hsa.SavePrint`
+- `hsa.TreeNode`
+- `hsa.TreeUtil`
+- `hsa.VisibleHanoi`
+- `hsa.VisualSortUtil`
+
+### Towers of Hanoi
+
+Some of these classes are used internally by hsa. Others were clearly added with the intention of them being used a teaching tools. For example, the `hsa.VisibleHanoi` class provides a simple ["Towers of Hanoi"](https://en.wikipedia.org/wiki/Tower_of_Hanoi) simulation window with basic methods for creating your own solution to the problem.
+
+This class is fully featured and complete, yet there is no existing reference to it anywhere on what is left of [the original HoltSoft website](https://web.archive.org/web/20000823061134/http://www.holtsoft.com/java/home.html).
+
+You can see an example of the class in action here:
+
+```java
+import java.util.ArrayList;
+import java.util.Arrays;
+
+import hsa.*;
+
+class Hanoi {
+
+    static ArrayList<Integer> possibleStacks = new ArrayList<Integer>();
+
+    // solves the Towers of Hanoi problem with any number of disks
+    // in a recursive implementation
+    public static void main(String[] args) {
+        possibleStacks.addAll(Arrays.asList(1,2,3));
+
+        int numDisks = 5;
+
+        // yes this is built into ready to program \(;-.)/
+        VisibleHanoi vs = new VisibleHanoi(numDisks);
+
+        // move all rings from the first stack to the last stack
+        moveStack(vs, 1, 3, numDisks);
+    }
+
+    public static void moveStack(VisibleHanoi vs, int start, int end, int depth) {
+        // if its just us then move to where we were told to go
+        if (depth == 1) {
+            vs.moveTop(start, end);
+            return;
+        }
+        // otherwise move everything above us to the free stack
+        int oppositeStack = (int)possibleStacks.stream()
+            .filter(p -> (p!=start && p!=end)).toArray()[0];
+        moveStack(vs, start, oppositeStack, depth-1);
+        
+        // then move to where we want to go
+        vs.moveTop(start, end);
+
+        // and move everything that was previously above us, back on top of us
+        moveStack(vs, oppositeStack, end, depth-1);
+        return;
+    }
+}
+```
+
+---

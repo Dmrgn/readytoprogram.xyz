@@ -1,46 +1,26 @@
-# Welcome to [Astro](https://astro.build)
+# Ready to Program Documentation ☕
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
+## Website
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+[https://readytoprogram.xyz](https://readytoprogram.xyz)
 
-## 🚀 Project Structure
+## Overview
 
-Inside of your Astro project, you'll see the following folders and files:
+Ready to Program has not been maintained since HoltSoft became defunct and the hsa library was last updated on July 18th 2003. This has lead Ready to Program to age significantly. [The original documentation](https://web.archive.org/web/20070622130456/http://www.holtsoft.com/java/hsa_package.html) is only available through *The Wayback Machine* and its early 2000s formatting, word choice and navigation make it a nightmare to find the right information.
 
-```
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
-│   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+This website's goal is to provide highschool students with an accessible and modern place to get Ready to Program's documentation, all in one place. Created by suffering high schoolers, for suffering high schoolers.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Tech Stack
 
-Any static assets, like images, can be placed in the `public/` directory.
+This website was created with:
 
-## 🧞 Commands
+![astro logo](./stack%20logos/astro.png)
+![preact logo](./stack%20logos/preact.png)
+![tailwind logo](./stack%20logos/tailwind.png)
+![mdx logo](./stack%20logos/mdx.png)
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                | Action                                             |
-| :--------------------- | :------------------------------------------------- |
-| `npm install`          | Installs dependencies                              |
-| `npm run dev`          | Starts local dev server at `localhost:3000`        |
-| `npm run build`        | Build your production site to `./dist/`            |
-| `npm run preview`      | Preview your build locally, before deploying       |
-| `npm run astro ...`    | Run CLI commands like `astro add`, `astro preview` |
-| `npm run astro --help` | Get help using the Astro CLI                       |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- [Astro](https://astro.build)
+- [Preact](https://preactjs.com/)
+- [Tailwind](https://tailwindcss.com/)
+- [MDX](https://mdxjs.com/)
