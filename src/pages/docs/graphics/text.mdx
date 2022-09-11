@@ -1,0 +1,82 @@
+---
+title: Text
+description: Monospaced fonts >>>
+icon: "🅰️"
+layout: ../../../layouts/Documentation.astro
+order: 3
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This documentation specifies methods of the `hsa.Console` and `java.awt.Font` classes which can be used to display graphical text.
+
+---
+
+## Drawing Text
+
+To draw graphical text you can use the `void hsa.Console.drawString(String str, int x, int y)` method which will draw the string `str` with its bottom left corner at (`x`, `y`) (the y position is the baseline of the text). 
+
+It is important to note that this method does not respond to the `void hsa.Console.setTextColor(java.awt.Color color)` method. Instead use `void hsa.Console.setColor(java.awt.Color color)`.
+
+```java
+import hsa.Console; // or import hsa.*;
+import java.awt.Color; // or import java.awt.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // set the text colour to red
+        c.setColour(Color.RED);
+    }
+}
+```
+---
+
+## Changing Fonts
+
+You can customize the font used to draw the text with the `void hsa.Console.setFont(Font f)` method.
+
+### Custom Fonts
+
+You can use any font which is installed on your system through the `java.awt.Font` constructor method:
+
+- `java.awt.Font Font(String name, int style, int size)`
+
+### Parameters
+
+- `String name`: specifies the name of the font as it is installed on your system.
+- `int style`: specifies the style (plain, bold, italic, etc..) of the created font.
+- `int size`: specifies font size measured in points.
+
+You can access the complete `java.awt.Font` reference [here.](https://docs.oracle.com/javase/7/docs/api/java/awt/Font.html)
+
+---
+
+## Examples
+
+```java
+import hsa.Console; // or import hsa.*;
+import java.awt.Font;
+import java.awt.Color; // or import java.awt.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // create a new font of size 
+        // set the font colour to red
+        c.setColour(Color.RED);
+    }
+}
+```
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on drawing utility functions of `hsa.Console` [here](/docs/graphics/utilities).

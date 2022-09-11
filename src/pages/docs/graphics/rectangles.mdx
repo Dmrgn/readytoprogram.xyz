@@ -1,0 +1,88 @@
+---
+title: Rectangles
+description: c.drawRect(10, 10, 100, 100);
+icon: "🔲"
+layout: ../../../layouts/Documentation.astro
+order: 1
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This documentation specifies various methods of the `hsa.Console` class which can be used to display, mutate and otherwise manipulate graphical rectangles.
+
+Ready to Program draws from left to right, top to bottom. This means that as the specified `x` value increases it will approach the right side of the screen and as the specified `y` value increases it will approach the bottom of the screen.
+
+All values passed through coordinate and size parameters are measured in pixels.
+
+---
+
+## Rectangle Methods
+
+Each graphics method which begins with "draw" has an equivilent "fill" method which fills in the entire area with the active colour.
+
+E.g `void hsa.Console.drawRect(int x, int y, int width, int height)` -> `void hsa.Console.fillRect(int x, int y, int width, int height)`
+
+### Methods
+
+- `void hsa.Console.drawRect(int x, int y, int width, int height)`
+- `void hsa.Console.drawRoundRect(int x, int y, int width, int height, int arcWidth, int arcHeight)`
+- `void hsa.Console.clearRect(int x, int y, int width, int height)`
+- `void hsa.Console.copyArea(int x, int y, int width, int height, int deltaX, int deltaY)`
+
+### Parameters
+
+- `int x` specifies the x position of the top left corner of the drawn rectangle.
+- `int y` specifies the y position of the top left corner of the drawn rectangle (higher values approach the bottom of the screen).
+- `int width` specifies the width of the drawn rectangle.
+- `int height` specifies the height of the drawn rectangle.
+- `int arcWidth` specifies the arc width of the drawn rounded rectangle's corners (measured in pixels).
+- `int arcHeight` specifies the arc height of the drawn rounded rectangle's corners (measured in pixels).
+- `int deltaX` specifies the how many pixels to translate the copied area's x position before drawing it.
+- `int deltaY` specifies the how many pixels to translate the copied area's y position before drawing it.
+
+---
+
+## Examples
+
+```java
+import hsa.Console; // or import hsa.*;
+import java.awt.Color; // or import java.awt.*;
+
+class Main {
+    public static void main(String[] args) {
+        Console c = new Console();
+        // set the active colour to red
+        c.setColour(Color.RED);
+        // draw the outline of a rectangle which is
+        //     - 10 pixels from the left of the window
+        //     - 10 pixels from the top of the window
+        //     - has a width of 100 pixels
+        //     - has a height of 100 pixels
+        //     - has a red outline
+        c.drawRect(10, 10, 100, 100);
+    }
+}
+```
+
+```java
+// set the active colour to blue
+c.setColour(Color.BLUE);
+// draw a filled rectangle with a width of 100 pixels and a height of 100 pixels
+// with a top left corner at the coordinates of (0, 0)
+c.fillRect(0, 0, 100, 100);
+// set all the pixels within the rectangle with a width of 50 pixels and a height of 50 pixels
+// and a top left corner at the coordinates of (0, 0) to white
+c.clearRect(0, 0, 50, 50);
+```
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on drawing other shapes with `hsa.Console` [here](/docs/graphics/shapes).

@@ -1,0 +1,51 @@
+---
+title: Utilities
+description: Graphics utilities
+icon: "🅰️"
+layout: ../../../layouts/Documentation.astro
+order: 4
+incomplete: true
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This documentation specifies various methods of the `hsa.Console` class which are used in utility.
+
+---
+
+## Console Size
+
+- `int hsa.Console.getWidth()`
+- `int hsa.Console.getHeight()`
+
+Returns the width and height respectively of the `hsa.Console` window in pixels.
+
+```java
+// set the active colour to red
+// (must import java.awt.Color)
+c.setColour(Color.RED);
+// fill the left half of the screen
+c.fillRect(0, 0, c.getWidth()/2, c.getHeight());
+```
+
+---
+
+## Paint Mode
+
+You can use the `void hsa.Console.setXORMode(Color c)` method to inform the `hsa.Console` instance that you want any drawn geometry to be XOR'd with the background.
+
+For example, after calling `void hsa.Console.setXORMode(Color c)`, drawing a red rectangle (RGB 255, 0, 0) over a pixel with the RGB colour (255, 255, 255) (white) will result in a pixel with RGB colour (0, 255, 255).
+
+You can then call `void hsa.Console.setPaintMode()` to return the `hsa.Console` into paint mode where it will draw over the background.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on drawing text with `hsa.Console` [here](/docs/graphics/text).

@@ -1,0 +1,90 @@
+---
+title: Colours
+description: Ready to Program red
+icon: "🔴"
+layout: ../../../layouts/Documentation.astro
+order: 0
+---
+
+# {frontmatter.title}
+
+---
+
+## Overview
+
+This documentation outlines how to work with the `java.awt.Color` class in Ready to Program.
+
+The initial active colour a of a newly created `hsa.Console` is `java.awt.Color.BLACK`. This means that any geometry drawn will be black.
+
+You can change the active colour with a call to `void hsa.Console.setColour(java.awt.Color colour)` or with American spelling `void hsa.Console.setColor(java.awt.Color color)`.
+
+It is best practice to use only the American English spelling or only the British English spelling throughout your entire program.
+
+```java
+import hsa.Console; // or hsa.*;
+import java.awt.Color;
+
+class Main {
+    public static void main(String[] args) {
+        // the initial active colour is black
+        Console c = new Console();
+        // set the active colour to red
+        c.setColour(Color.RED);
+    }
+}
+```
+
+The above example uses a static constant specified as a member of the `java.awt.Color` class. You can find a complete list of the `java.awt.Color` constants [here.](https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html)
+
+---
+
+## Creating Colours
+
+### Constructors
+
+You can also create your own colours through a `java.awt.Color` constructor:
+
+- `java.awt.Color java.awt.Color(int r, int g, int b)`
+- `java.awt.Color java.awt.Color(int r, int g, int b, int a)`
+- `java.awt.Color java.awt.Color(float r, float g, float b)`
+- `java.awt.Color java.awt.Color(float r, float g, float b, float a)`
+
+### Parameters
+
+- `int r` specifies the amount of red in the created colour (between 0 and 255 inclusive).
+- `int g` specifies the amount of green in the created colour (between 0 and 255 inclusive).
+- `int b` specifies the amount of blue in the created colour (between 0 and 255 inclusive).
+- `float r` specifies the amount of red in the created colour as a float (between 0 and 1 inclusive).
+- `float g` specifies the amount of green in the created colour as a float (between 0 and 1 inclusive).
+- `float b` specifies the amount of blue in the created colour as a float (between 0 and 1 inclusive).
+
+You can find the complete reference to the `java.awt.Color` class [here.](https://docs.oracle.com/javase/7/docs/api/java/awt/Color.html)
+
+### Example
+
+```java
+// create a colour with 100% red, 0% green and 0% blue
+Color myColour = new Color(255, 0, 0);
+c.setColour(myColour);
+// create a colour with 50% red, 90% green and 20% blue
+Color myColour1 = new Color(0.5, 0.9, 0.2);
+c.setColour(myColour1);
+```
+
+---
+
+## Colour Pickers
+
+It is difficult to visualize what a colour will look like exclusively through 3 numeric values. Luckily, the internet is home to several different colour picking utilities that you can access in your browser.
+
+For example: [htmlcolorcodes.com](https://htmlcolorcodes.com/color-picker/).
+
+You will want to copy the "RGB" value.
+
+---
+
+## What Next?
+
+hmmm...
+
+Check out the documentation on drawing rectangles with `hsa.Console` [here](/docs/graphics/rectangles).

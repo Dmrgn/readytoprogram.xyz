@@ -1,0 +1,12 @@
+---
+import DocumentationSelection from "../../layouts/DocumentationSelection.astro";
+
+// all docs except for the intro page
+const posts = (await Astro.glob('../docs/graphics/*.mdx')).sort((a,b)=>{
+    return a.frontmatter.order - b.frontmatter.order;
+});
+---
+
+<DocumentationSelection title="Graphics Documentation Navigation" posts={posts}>
+
+</DocumentationSelection>

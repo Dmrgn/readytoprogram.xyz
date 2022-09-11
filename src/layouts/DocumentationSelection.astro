@@ -14,7 +14,7 @@ import Layout from "./Layout.astro";
                 <slot/>
                 <div class="lg:grid grid-cols-2 items-stretch">
                     {posts.map(post =>
-                        <a href={post.url} class="m-2">
+                        <a href={post.frontmatter.navigator ?? post.url} class="m-2">
                             <div class="selection-hoverable box transition h-full">
                                 <div class="flex flex-col mt-2">
                                     <div class="flex items-center">
