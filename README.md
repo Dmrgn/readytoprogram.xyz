@@ -1,7 +1,5 @@
 # Ready to Program Documentation ☕
 
-## Website
-
 [https://readytoprogram.xyz](https://readytoprogram.xyz)
 
 ## Overview
