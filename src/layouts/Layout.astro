@@ -32,6 +32,14 @@ import { SEO } from "astro-seo";
                 }
             }}
         />
+        <!-- page find scripts -->
+        <link href="/_pagefind/pagefind-ui.css" rel="stylesheet">
+        <script is:inline src="/_pagefind/pagefind-ui.js" type="text/javascript"></script>
+        <script is:inline>
+            window.addEventListener('DOMContentLoaded', (event) => {
+                new PagefindUI({ element: "#search", showImages: false });
+            });
+        </script>
 	</head>
 	<body>
         <Navigation />
@@ -41,6 +49,7 @@ import { SEO } from "astro-seo";
         <Footer />
 	</body>
 </html>
+
 <style>
     body {
         @apply dark:bg-dark dark:text-lightAccent bg-light text-dark relative;

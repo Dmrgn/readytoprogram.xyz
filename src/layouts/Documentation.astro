@@ -68,6 +68,9 @@ import LeftMenu from "../components/LeftMenu.astro"
     .mdx-content :is(p > code, li > code) {
         @apply text-primary dark:bg-darkAccent bg-lightAccent p-1 rounded-md;
     }
+    .mdx-content p {
+        @apply overflow-x-scroll;
+    }
     .mdx-content > p > a {
         @apply text-primary hover:text-darkAccent hover:dark:text-lightAccent underline;
         position: relative;

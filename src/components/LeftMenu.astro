@@ -2,14 +2,18 @@
 import PageContentMenu from "./PageContentMenu.jsx"
 ---
 
-<div class="menu-container m-8 sticky box">
-    <PageContentMenu client:load />
+<div class="md:sticky top-52">
+    <div class="menu-container m-8 box">
+        <div id="search"></div>
+    </div>
+    <div class="menu-container m-8 box">
+        <PageContentMenu client:load />
+    </div>
 </div>
 
 <style>
     .menu-container {
         width: min(400px, 85%);
-        top: 204px;
     }
 </style>
 
