@@ -24,6 +24,7 @@
     "@nanostores/preact": "^0.2.1",
     "astro-seo": "^0.6.0",
     "nanoid": "^4.0.0",
-    "nanostores": "^0.6.0"
+    "nanostores": "^0.6.0",
+    "pagefind": "^0.8.1"
   }
 }
