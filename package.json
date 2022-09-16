@@ -6,7 +6,7 @@
     "dev": "astro dev",
     "start": "astro dev",
     "build": "astro build",
-    "postbuild": "npx pagefind --source dist",
+    "postbuild": "pagefind --source dist",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -25,6 +25,6 @@
     "astro-seo": "^0.6.0",
     "nanoid": "^4.0.0",
     "nanostores": "^0.6.0",
-    "pagefind": "^0.8.0"
+    "pagefind": "^0.8.1"
   }
 }
