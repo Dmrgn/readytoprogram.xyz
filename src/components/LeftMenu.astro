@@ -20,21 +20,33 @@ import PageContentMenu from "./PageContentMenu.jsx"
 <style is:global>
     /* declared in PageContentMenu.jsx */
     .menu-items-container > .section {
-        @apply text-xl my-4 ml-4 relative transition hover:scale-110;
+        @apply text-xl my-4 ml-4 relative;
         left: -50%;
     }
-    .menu-items-container > .sub-section {
-        @apply my-4 ml-6 relative transition hover:scale-110;
-        left: -50%;
-
+    .menu-items-container .section-name {
+        @apply relative transition hover:scale-110;
+    }
+    .menu-items-container .sub-section {
+        @apply transition hover:scale-110;
     }
     /* the arrow image */
-    .menu-items-container > .sub-section > img {
+    .menu-items-container .sub-section > img {
         filter:hue-rotate(120deg) brightness(120%);
         height: 20px;
     }
     .navigate-item {
         @apply relative;
         top: -20vh;
+    }
+    @media screen(md) {
+        .menu-items-container > .section > .sub-section {
+            transform: scale(0);
+            max-height: 0px;
+            transition: max-height 0.5s;
+        }
+        .menu-items-container > .section:hover > .sub-section {
+            transform: scale(1);
+            max-height: 100%;
+        }
     }
 </style>
