@@ -6,7 +6,7 @@ import PageContentMenu from "./PageContentMenu.jsx"
     <div class="menu-container m-8 box">
         <div id="search"></div>
     </div>
-    <div class="menu-container m-8 box">
+    <div class="page-content-menu menu-container m-8 box">
         <PageContentMenu client:load />
     </div>
 </div>
@@ -39,14 +39,13 @@ import PageContentMenu from "./PageContentMenu.jsx"
         top: -20vh;
     }
     @media screen(md) {
-        .menu-items-container > .section > .sub-section {
-            transform: scale(0);
-            max-height: 0px;
-            transition: max-height 0.5s;
+        .page-content-menu {
+            max-height: 50vh !important;
+            overflow: scroll;
+            scrollbar-width: none;
         }
-        .menu-items-container > .section:hover > .sub-section {
-            transform: scale(1);
-            max-height: 100%;
+        .page-content-menu::-webkit-scrollbar {
+            display: none;
         }
     }
 </style>

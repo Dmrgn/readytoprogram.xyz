@@ -40,7 +40,6 @@ export default function PageContentMenu() {
                 subsections: currentSection.sections,
                 id: currentSection.id
             });
-        console.log(formattedHeaders);
         setMenuItems(formattedHeaders);
     }, [])
 
