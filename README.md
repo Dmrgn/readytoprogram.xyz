@@ -1,6 +1,6 @@
 # Ready to Program Documentation ☕
 
-[https://readytoprogram.xyz](https://readytoprogram.xyz)
+[https://readytoprogram.netlify.app/](https://readytoprogram.netlify.app/)
 
 ## Overview
 
